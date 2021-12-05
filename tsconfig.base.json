@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@new-trader/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@new-trader/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@trader/home": ["libs/home/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

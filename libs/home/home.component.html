@@ -1,0 +1,38 @@
+<mat-card-header>
+  <h1>Welcome to Trader</h1>
+</mat-card-header>
+<mat-card>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="options">
+    <mat-form-field appearance="fill">
+      <mat-label>Coin One</mat-label>
+      <mat-select formControlName="coinOne">
+        <mat-option *ngFor="let coin of coins" value="{{ coin }}">{{
+          coin
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="fill">
+      <mat-label>Coin Two</mat-label>
+      <mat-select formControlName="coinTwo">
+        <mat-option *ngFor="let coin of coins" value="{{ coin }}">{{
+          coin
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field appearance="fill">
+      <mat-label>Algorithm</mat-label>
+      <mat-select formControlName="algorithm">
+        <mat-option
+          *ngFor="let algorithm of algorithms"
+          value="{{ algorithm }}"
+          #algorithm
+          >{{ algorithm }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    &nbsp;
+    <button mat-raised-button color="primary" type="submit">Launch</button>
+  </form>
+</mat-card>

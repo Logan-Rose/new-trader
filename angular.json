@@ -86,7 +86,7 @@
               "apps/new-trader/src/favicon.ico",
               "apps/new-trader/src/assets"
             ],
-            "styles": ["apps/new-trader/src/styles.scss"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "apps/new-trader/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
