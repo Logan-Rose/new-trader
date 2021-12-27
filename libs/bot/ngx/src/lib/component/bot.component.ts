@@ -1,12 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BotService } from '../service/bot.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'new-trader-bot-interface',
+  templateUrl: './bot.component.html',
+  styleUrls: ['./bot.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class BotComponent implements OnInit {
   coins: string[];
   algorithms: string[];
 
@@ -16,13 +18,16 @@ export class HomeComponent implements OnInit {
     "algorithm": new FormControl("", Validators.required),
 });
 
-  constructor() {
+  constructor(
+    private botService: BotService
+  ) {
     this.coins = ['BTC','ETH','LTC','BNB','USDT', 'ADA', 'XRP']
     this.algorithms = ['algo 1','algo 2','algo 3','algo 4','algo 5']
-
    }
 
   ngOnInit(): void {
+    console.log('Initializing Bot')
+    this.botService.sayHello()
   }
 
   onSubmit(){

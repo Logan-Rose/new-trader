@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -8,6 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { BotComponent } from './component/bot.component'
+import { BotService } from './service/bot.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,14 +18,16 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
-    HomeComponent
+    BotComponent
   ],
   exports: [
-    HomeComponent
+    BotComponent
+  ],
+  providers:[
+    BotService
   ]
 })
-export class HomeModule { }
-
+export class BotModule { }

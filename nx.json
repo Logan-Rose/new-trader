@@ -33,6 +33,15 @@
     "api-interfaces": {
       "tags": []
     },
+    "bot-nestjs": {
+      "tags": []
+    },
+    "bot-ngx": {
+      "tags": []
+    },
+    "home-ngx": {
+      "tags": []
+    },
     "new-trader": {
       "tags": []
     },

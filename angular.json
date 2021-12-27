@@ -66,6 +66,78 @@
         }
       }
     },
+    "bot-nestjs": {
+      "root": "libs/bot/nestjs",
+      "sourceRoot": "libs/bot/nestjs/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/bot/nestjs/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/bot/nestjs"],
+          "options": {
+            "jestConfig": "libs/bot/nestjs/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "bot-ngx": {
+      "projectType": "library",
+      "root": "libs/bot/ngx",
+      "sourceRoot": "libs/bot/ngx/src",
+      "prefix": "new-trader",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/bot/ngx"],
+          "options": {
+            "jestConfig": "libs/bot/ngx/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/bot/ngx/src/**/*.ts",
+              "libs/bot/ngx/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "home-ngx": {
+      "projectType": "library",
+      "root": "libs/home/ngx",
+      "sourceRoot": "libs/home/ngx/src",
+      "prefix": "new-trader",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/home/ngx"],
+          "options": {
+            "jestConfig": "libs/home/ngx/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/home/ngx/src/**/*.ts",
+              "libs/home/ngx/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "new-trader": {
       "projectType": "application",
       "root": "apps/new-trader",
@@ -86,7 +158,10 @@
               "apps/new-trader/src/favicon.ico",
               "apps/new-trader/src/assets"
             ],
-            "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "apps/new-trader/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "apps/new-trader/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {

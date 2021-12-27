@@ -16,7 +16,11 @@
     "baseUrl": ".",
     "paths": {
       "@new-trader/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@trader/home": ["libs/home/index.ts"]
+      "@new-trader/bot/nestjs": ["libs/bot/nestjs/src/index.ts"],
+      "@new-trader/home/ngx": ["libs/home/ngx/src/index.ts"],
+      "@trader/bot/nestjs": ["libs/bot/nestjs/src/index.ts"],
+      "@trader/bot/ngx": ["libs/bot/ngx/src/index.ts"],
+      "@trader/home": ["libs/home/ngx/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
