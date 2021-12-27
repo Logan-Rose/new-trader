@@ -1,8 +1,10 @@
 <mat-card>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="options">
+  <new-trader-candlestick></new-trader-candlestick>
+
+  <form [formGroup]="form" (ngSubmit)="launchBot()" class="options">
     <mat-form-field appearance="fill">
       <mat-label>Coin One</mat-label>
-      <mat-select formControlName="coinOne">
+      <mat-select formControlName="coinOne" (selectionChange)="getData()">
         <mat-option *ngFor="let coin of coins" value="{{ coin }}">{{
           coin
         }}</mat-option>
@@ -11,7 +13,7 @@
     &nbsp;
     <mat-form-field appearance="fill">
       <mat-label>Coin Two</mat-label>
-      <mat-select formControlName="coinTwo">
+      <mat-select formControlName="coinTwo" (selectionChange)="getData()">
         <mat-option *ngFor="let coin of coins" value="{{ coin }}">{{
           coin
         }}</mat-option>
@@ -30,6 +32,14 @@
       </mat-select>
     </mat-form-field>
     &nbsp;
-    <button mat-raised-button color="primary" type="submit">Launch</button>
+    <button
+      [disabled]="form.invalid"
+      mat-raised-button
+      color="primary"
+      type="submit"
+    >
+      Launch
+    </button>
   </form>
+  <button mat-raised-button color="secondary" (click)="killBot()">Kill</button>
 </mat-card>

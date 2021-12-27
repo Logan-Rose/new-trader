@@ -113,6 +113,31 @@
         }
       }
     },
+    "charts-ngx": {
+      "projectType": "library",
+      "root": "libs/charts/ngx",
+      "sourceRoot": "libs/charts/ngx/src",
+      "prefix": "new-trader",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/charts/ngx"],
+          "options": {
+            "jestConfig": "libs/charts/ngx/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/charts/ngx/src/**/*.ts",
+              "libs/charts/ngx/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "home-ngx": {
       "projectType": "library",
       "root": "libs/home/ngx",

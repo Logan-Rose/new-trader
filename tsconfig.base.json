@@ -1,6 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
@@ -17,10 +19,14 @@
     "paths": {
       "@new-trader/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@new-trader/bot/nestjs": ["libs/bot/nestjs/src/index.ts"],
+      "@new-trader/bot/ngx": ["libs/bot/ngx/src/index.ts"],
+      "@new-trader/charts/ngx": ["libs/charts/ngx/src/index.ts"],
       "@new-trader/home/ngx": ["libs/home/ngx/src/index.ts"],
+      "@secrets": ["secrets.json"],
       "@trader/bot/nestjs": ["libs/bot/nestjs/src/index.ts"],
       "@trader/bot/ngx": ["libs/bot/ngx/src/index.ts"],
-      "@trader/home": ["libs/home/ngx/src/index.ts"]
+      "@trader/home": ["libs/home/ngx/src/index.ts"],
+      "crypto": ["node_modules/crypto-js"]
     }
   },
   "exclude": ["node_modules", "tmp"]
