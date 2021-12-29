@@ -1,37 +1,37 @@
-<mat-card>
-  <new-trader-candlestick></new-trader-candlestick>
+<mat-card class="card">
+  <div class="charts">
+    <div class="chart">
+      <new-trader-candlestick [pair]="pair"></new-trader-candlestick>
+    </div>
+    <div class="chart">
+      <new-trader-price-chart [pair]="pair"></new-trader-price-chart>
+    </div>
 
+    <div class="chart">
+      <new-trader-volume-chart [pair]="pair"></new-trader-volume-chart>
+    </div>
+  </div>
   <form [formGroup]="form" (ngSubmit)="launchBot()" class="options">
     <mat-form-field appearance="fill">
-      <mat-label>Coin One</mat-label>
-      <mat-select formControlName="coinOne" (selectionChange)="getData()">
-        <mat-option *ngFor="let coin of coins" value="{{ coin }}">{{
-          coin
-        }}</mat-option>
+      <mat-label>Pair</mat-label>
+      <mat-select [formControl]="pairControl">
+        <mat-option *ngFor="let pair of pairs | async" value="{{ pair.symbol }}"
+          >{{ pair.baseAsset }} -> {{ pair.quoteAsset }}</mat-option
+        >
       </mat-select>
     </mat-form-field>
-    &nbsp;
-    <mat-form-field appearance="fill">
-      <mat-label>Coin Two</mat-label>
-      <mat-select formControlName="coinTwo" (selectionChange)="getData()">
-        <mat-option *ngFor="let coin of coins" value="{{ coin }}">{{
-          coin
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    &nbsp;
+
     <mat-form-field appearance="fill">
       <mat-label>Algorithm</mat-label>
       <mat-select formControlName="algorithm">
         <mat-option
           *ngFor="let algorithm of algorithms"
-          value="{{ algorithm }}"
+          value="{{ algorithm.function }}"
           #algorithm
-          >{{ algorithm }}</mat-option
+          >{{ algorithm.name }}</mat-option
         >
       </mat-select>
     </mat-form-field>
-    &nbsp;
     <button
       [disabled]="form.invalid"
       mat-raised-button

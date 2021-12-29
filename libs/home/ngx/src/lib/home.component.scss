@@ -1,4 +1,5 @@
-.options {
+.container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  margin: 50px 150px;
 }

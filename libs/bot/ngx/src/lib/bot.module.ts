@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { BotComponent } from './component/bot.component'
+import { BotComponent } from './component/bot.component';
 import { BotService } from './service/bot.service';
 import { ChartsModule } from '@new-trader/charts/ngx';
 @NgModule({
@@ -20,16 +20,10 @@ import { ChartsModule } from '@new-trader/charts/ngx';
     MatSelectModule,
     MatButtonModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
   ],
-  declarations: [
-    BotComponent
-  ],
-  exports: [
-    BotComponent
-  ],
-  providers:[
-    BotService
-  ]
+  declarations: [BotComponent],
+  exports: [BotComponent],
+  providers: [BotService],
 })
-export class BotModule { }
+export class BotModule {}
