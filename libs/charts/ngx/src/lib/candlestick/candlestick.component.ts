@@ -5,7 +5,7 @@ import { BotService } from '@new-trader/bot/ngx';
 import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'new-trader-candlestick',
-  template: '<div echarts [options]="chartOption" class="demo-chart"></div>',
+  template: '<div echarts [options]="chartOption" class="chart"></div>',
   styleUrls: ['./candlestick.component.scss'],
 })
 export class CandlestickComponent implements OnInit {
@@ -39,6 +39,7 @@ export class CandlestickComponent implements OnInit {
         this.chartOption = {
           title: {
             text: 'Candlestick Data',
+            left: 'center',
           },
           tooltip: {
             show: true,

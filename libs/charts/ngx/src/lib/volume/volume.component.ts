@@ -5,7 +5,7 @@ import { BotService } from '@new-trader/bot/ngx';
 import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'new-trader-volume-chart',
-  template: '<div echarts [options]="chartOption" class="demo-chart"></div>',
+  template: '<div echarts [options]="chartOption" class="chart"></div>',
   styleUrls: ['./volume.component.scss'],
 })
 export class VolumeComponent implements OnInit {

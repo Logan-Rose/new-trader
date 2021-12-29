@@ -9,7 +9,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { BotComponent } from './component/bot.component';
 import { BotService } from './service/bot.service';
-import { ChartsModule } from '@new-trader/charts/ngx';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +19,6 @@ import { ChartsModule } from '@new-trader/charts/ngx';
     MatSelectModule,
     MatButtonModule,
     ReactiveFormsModule,
-    ChartsModule,
   ],
   declarations: [BotComponent],
   exports: [BotComponent],

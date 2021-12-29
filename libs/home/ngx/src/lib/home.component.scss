@@ -3,3 +3,10 @@
   flex-direction: column;
   margin: 50px 150px;
 }
+.charts {
+  display: flex;
+}
+.chart {
+  min-width: 0;
+  flex: 1;
+}

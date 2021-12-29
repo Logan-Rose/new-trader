@@ -2,5 +2,21 @@
   <mat-card-header>
     <h1>Welcome to Trader</h1>
   </mat-card-header>
-  <new-trader-bot-interface> </new-trader-bot-interface>
+
+  <mat-card class="charts">
+    <div class="chart">
+      <new-trader-candlestick [pair]="pair"></new-trader-candlestick>
+    </div>
+    <div class="chart">
+      <new-trader-price-chart [pair]="pair"></new-trader-price-chart>
+    </div>
+
+    <div class="chart">
+      <new-trader-volume-chart [pair]="pair"></new-trader-volume-chart>
+    </div>
+  </mat-card>
+  <br />
+
+  <new-trader-bot-interface (pair)="pair.next($event)">
+  </new-trader-bot-interface>
 </div>

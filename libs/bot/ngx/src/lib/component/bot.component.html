@@ -1,16 +1,4 @@
 <mat-card class="card">
-  <div class="charts">
-    <div class="chart">
-      <new-trader-candlestick [pair]="pair"></new-trader-candlestick>
-    </div>
-    <div class="chart">
-      <new-trader-price-chart [pair]="pair"></new-trader-price-chart>
-    </div>
-
-    <div class="chart">
-      <new-trader-volume-chart [pair]="pair"></new-trader-volume-chart>
-    </div>
-  </div>
   <form [formGroup]="form" (ngSubmit)="launchBot()" class="options">
     <mat-form-field appearance="fill">
       <mat-label>Pair</mat-label>

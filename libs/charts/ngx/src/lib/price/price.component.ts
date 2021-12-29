@@ -5,7 +5,7 @@ import { BotService } from '@new-trader/bot/ngx';
 import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'new-trader-price-chart',
-  template: '<div echarts [options]="chartOption" class="demo-chart"></div>',
+  template: '<div echarts [options]="chartOption" class="chart"></div>',
   styleUrls: ['./price.component.scss'],
 })
 export class PriceComponent implements OnInit {
@@ -37,6 +37,7 @@ export class PriceComponent implements OnInit {
         this.chartOption = {
           title: {
             text: 'Closing Price Data',
+            left: 'center',
           },
           tooltip: {
             show: true,
