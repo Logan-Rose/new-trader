@@ -5,8 +5,10 @@
 }
 .charts {
   display: flex;
+  flex-wrap: wrap;
+  min-width: 450px;
 }
 .chart {
-  min-width: 0;
+  min-width: 450px;
   flex: 1;
 }

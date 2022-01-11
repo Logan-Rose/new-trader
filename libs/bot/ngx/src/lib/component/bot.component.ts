@@ -23,7 +23,7 @@ export class BotComponent implements OnInit {
   pairControl = new FormControl();
 
   form = new FormGroup({
-    pair: new FormControl('', Validators.required),
+    pair: this.pairControl,
     algorithm: new FormControl('', Validators.required),
   });
   bot?: ReconnectingWebSocketHandler;
@@ -61,5 +61,8 @@ export class BotComponent implements OnInit {
     } else {
       console.log('No Bot launched');
     }
+  }
+  buy() {
+    this.botService.buy(this.pair.value);
   }
 }

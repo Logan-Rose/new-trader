@@ -18,8 +18,6 @@ export class VolumeComponent implements OnInit {
 
   ngOnInit(): void {
     this.pair?.subscribe((x) => {
-      console.log('get data');
-
       this.botService.tradingPair.next(x);
       this.rawData = this.botService.tradingData;
 
