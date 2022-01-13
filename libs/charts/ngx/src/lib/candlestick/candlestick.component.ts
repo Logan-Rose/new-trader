@@ -23,14 +23,15 @@ export class CandlestickComponent implements OnInit {
       this.rawData.subscribe((y: any[]) => {
         this.candleStickDataSet = y.map((x) => {
           return [
-            Number(x.close),
-            Number(x.open),
-            Number(x.low),
-            Number(x.high),
+            Number(x[4]), // Close
+            Number(x[1]), // Open
+            Number(x[3]), // Low
+            Number(x[2]), // High
           ];
         });
-        this.dates = y.map((x: { openTime: string | number | Date }) => {
-          return new Date(x.openTime).toISOString().split('T')[0];
+        console.log(y)
+        this.dates = y.map((x) => {
+          return new Date(x[0]).toISOString().split('T')[0];
         });
         // console.log(this.dates);
         // console.log(this.candleStickDataSet);

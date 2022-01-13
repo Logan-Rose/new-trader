@@ -18,17 +18,15 @@ export class VolumeComponent implements OnInit {
 
   ngOnInit(): void {
     this.pair?.subscribe((x) => {
-      console.log('get data');
-
       this.botService.tradingPair.next(x);
       this.rawData = this.botService.tradingData;
 
       this.rawData.subscribe((y: any[]) => {
         this.volumeChartDataSet = y.map((x) => {
-          return Number(x.volume);
+          return Number(x[5]);
         });
-        this.dates = y.map((x: { openTime: string | number | Date }) => {
-          return new Date(x.openTime).toISOString().split('T')[0];
+        this.dates = y.map((x) => {
+          return new Date(x[0]).toISOString().split('T')[0];
         });
         const end = this.volumeChartDataSet.length - 1;
         const start = end - 30;

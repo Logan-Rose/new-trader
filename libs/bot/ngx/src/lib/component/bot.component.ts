@@ -1,6 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ReconnectingWebSocketHandler } from 'binance-api-node';
 import { BotService } from '../service/bot.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 @Component({
@@ -23,10 +22,10 @@ export class BotComponent implements OnInit {
   pairControl = new FormControl();
 
   form = new FormGroup({
-    pair: new FormControl('', Validators.required),
+    pair: this.pairControl,
     algorithm: new FormControl('', Validators.required),
   });
-  bot?: ReconnectingWebSocketHandler;
+  bot?: any;
   dates: string[] | undefined;
   candleStickDataSet: number[][] | undefined;
   rawData: Observable<any> | undefined;
@@ -61,5 +60,8 @@ export class BotComponent implements OnInit {
     } else {
       console.log('No Bot launched');
     }
+  }
+  buy() {
+    this.botService.buy(this.pair.value);
   }
 }
