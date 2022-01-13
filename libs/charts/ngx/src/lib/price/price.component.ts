@@ -22,12 +22,12 @@ export class PriceComponent implements OnInit {
       this.rawData = this.botService.tradingData;
       this.rawData.subscribe((y: any[]) => {
         this.priceChartDataSet = y.map(
-          (x: { close: string; open: string; low: string; high: string }) => {
-            return Number(x.close);
+          (x) => {
+            return Number(x[4]);
           }
         );
-        this.dates = y.map((x: { openTime: string | number | Date }) => {
-          return new Date(x.openTime).toISOString().split('T')[0];
+        this.dates = y.map((x) => {
+          return new Date(x[0]).toISOString().split('T')[0];
         });
         // console.log(this.dates);
         // console.log(this.priceChartDataSet);

@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import Binance from 'binance-api-node';
-import { MainClient, WebsocketClient } from 'binance';
 import secrets from '@secrets';
 import { from, Observable, Subject } from 'rxjs';
 import * as _ from 'lodash';
 import {
   distinctUntilChanged,
   shareReplay,
-  tap,
   switchMap,
+  map,
 } from 'rxjs/operators';
 import { RSI } from 'technicalindicators';
 
@@ -17,23 +15,20 @@ import { RSI } from 'technicalindicators';
   providedIn: 'root',
 })
 export class BotService {
-  client = new MainClient({
-    api_key: secrets.binance.apiKey,
-    api_secret: secrets.binance.apiSecret,
-  });
-  socket = new WebsocketClient({
-    api_key: secrets.binance.apiKey,
-    api_secret: secrets.binance.apiSecret,
-    beautify: true,
-  });
+  baseUrl = "https://api.binance.com/api/v3"
+  client = {
+    apiKey: secrets.binance.apiKey,
+    apiSecret: secrets.binance.apiSecret,
+  };
+
 
   //if a position is currently held by the bot
   holding: boolean;
 
   // THe stock data recieved this period
   window: any[];
-
   constructor(private http: HttpClient) {
+    this.http = http;
     this.holding = false;
     this.window = [];
   }
@@ -42,23 +37,26 @@ export class BotService {
   readonly tradingData: Observable<any> = this.tradingPair.pipe(
     distinctUntilChanged(_.isEqual),
     switchMap((pair) =>
-      from(this.client.getKlines({ symbol: pair, interval: '1w' }))
+     this.http.get(`${this.baseUrl}/klines?symbol=${pair}&interval=1w`)
     ),
     shareReplay()
   );
 
   launchBot(pair: string, algorithm: any) {
-    return this.socket.subscribeKlines(pair, '1m', 'spot');
+    //return this.client.ws.candles(pair, '1m', (x) => {
+    //  this.algo1(x);
+    //});
   }
 
   getExchangeInfo() {
     return from(
-      this.client.getExchangeInfo().then((data) => {
+      this.http.get(`${this.baseUrl}/exchangeInfo`).pipe(map((data: any) => {
+        console.log(data);
         return data.symbols
-          .filter((x) => {
+          .filter((x: { status: string; }) => {
             return x.status === 'TRADING';
           })
-          .map((x) => {
+          .map((x: { symbol: any; baseAsset: any; quoteAsset: any; }) => {
             return {
               symbol: x.symbol,
               baseAsset: x.baseAsset,
@@ -66,6 +64,7 @@ export class BotService {
             };
           });
       })
+      )
     );
   }
 
@@ -96,7 +95,7 @@ export class BotService {
     // });
   }
 
-  algo1(data: any) {
+  async algo1(data: any) {
     this.window.push(data);
     console.log(this.window);
 
@@ -124,6 +123,16 @@ export class BotService {
       this.holding = !this.holding;
     } else if (!this.holding) {
       console.log('EXECUTE BUY');
+      // await this.client.orderTest({
+      //    symbol: 'XLMETH',
+      //   side: 'BUY',
+      //   quantity: '100',
+      //   price: '0.0002',
+      //   type: OrderType.MARKET,
+        
+      // })
+
+
       this.holding = !this.holding;
     }
   }

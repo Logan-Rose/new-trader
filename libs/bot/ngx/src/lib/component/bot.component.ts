@@ -1,6 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ReconnectingWebSocketHandler } from 'binance-api-node';
 import { BotService } from '../service/bot.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 @Component({
@@ -26,7 +25,7 @@ export class BotComponent implements OnInit {
     pair: this.pairControl,
     algorithm: new FormControl('', Validators.required),
   });
-  bot?: ReconnectingWebSocketHandler;
+  bot?: any;
   dates: string[] | undefined;
   candleStickDataSet: number[][] | undefined;
   rawData: Observable<any> | undefined;
